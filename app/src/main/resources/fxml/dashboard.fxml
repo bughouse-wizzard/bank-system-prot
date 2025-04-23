@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="CENTER" spacing="10.0" xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml" fx:controller="bank.system.prot.controller.DashboardController">
+
+    <Label text="Dashboard" style="-fx-font-size: 24;" />
+    <Label fx:id="welcomeLabel" text="Welcome, User!" style="-fx-font-size: 18;" />
+    <TableView fx:id="accountsTable" prefHeight="200.0" prefWidth="400.0">
+        <columns>
+            <TableColumn text="Account ID" fx:id="accountIdColumn" />
+            <TableColumn text="Balance" fx:id="balanceColumn" />
+        </columns>
+    </TableView>
+    <HBox spacing="10.0">
+        <TextField fx:id="toUsernameField" promptText="Recipient Username" />
+        <TextField fx:id="amountField" promptText="Amount" />
+        <Button text="Transfer" onAction="#handleTransfer" />
+    </HBox>
+    <HBox spacing="10.0">
+        <TextField fx:id="depositAmountField" promptText="Deposit Amount" />
+        <Button text="Deposit" onAction="#handleDeposit" />
+    </HBox>
+    <Button text="Logout" onAction="#handleLogout" />
+</VBox>
