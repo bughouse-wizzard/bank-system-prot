@@ -6,7 +6,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 
-import bank.system.prot.db.Database;
+
 import bank.system.prot.service.AuthService;
 
 import java.sql.Connection;

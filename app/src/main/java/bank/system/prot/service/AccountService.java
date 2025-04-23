@@ -10,12 +10,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.math.BigDecimal;
 
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
-import bank.system.prot.controller.LoginController;
-
 public class AccountService {
     private final Connection connection;
 

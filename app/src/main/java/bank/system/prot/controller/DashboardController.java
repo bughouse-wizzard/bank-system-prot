@@ -12,7 +12,6 @@ import bank.system.prot.service.AuthService;
 import java.math.BigDecimal;
 import java.sql.Connection;
 
-import java.util.logging.Logger;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
 
@@ -32,7 +31,6 @@ public class DashboardController {
     private Connection connection;
     private int userId;
     private String username;
-    private Logger logger = Logger.getLogger(DashboardController.class.getName());
 
     public void initialize(Connection connection, int userId) {
         this.connection = connection;

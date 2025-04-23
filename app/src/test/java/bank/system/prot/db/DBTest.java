@@ -1,6 +1,5 @@
 package bank.system.prot.db;
 
-import bank.system.prot.db.Database;
 import java.sql.*;
 
 public class DBTest {
