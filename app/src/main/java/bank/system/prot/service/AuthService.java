@@ -14,19 +14,14 @@ public class AuthService {
         this.connection = connection;
     }
 
+    // Метод для хеширования пароля
     public static String hashPassword(String plainPassword) {
         return BCrypt.withDefaults().hashToString(12, plainPassword.toCharArray());
     }
 
+    // Метод для проверки пароля
     public static boolean verifyPassword(String plainPassword, String hashedPassword) {
-        if (hashedPassword.startsWith("$2a$")) {
-            // Оригинальный формат BCrypt
-            return BCrypt.verifyer().verify(plainPassword.toCharArray(), hashedPassword).verified;
-        } else {
-            // Base64-формат
-            String decodedHash = new String(java.util.Base64.getDecoder().decode(hashedPassword));
-            return BCrypt.verifyer().verify(plainPassword.toCharArray(), decodedHash).verified;
-        }
+        return BCrypt.verifyer().verify(plainPassword.toCharArray(), hashedPassword).verified;
     }
 
     public boolean register(String username, String password) {
@@ -47,7 +42,7 @@ public class AuthService {
         }
 
         try (PreparedStatement insertStmt = connection.prepareStatement(insertUserSql, PreparedStatement.RETURN_GENERATED_KEYS)) {
-            String hashedPassword = hashPassword(password);
+            String hashedPassword = hashPassword(password); // Хешируем пароль
             insertStmt.setString(1, username);
             insertStmt.setString(2, hashedPassword);
             insertStmt.executeUpdate();
@@ -75,10 +70,10 @@ public class AuthService {
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setString(1, username);
             ResultSet rs = stmt.executeQuery();
-    
+
             if (rs.next()) {
                 String hash = rs.getString("password");
-                if (verifyPassword(password, hash)) {
+                if (verifyPassword(password, hash)) { // Проверяем пароль
                     return rs.getInt("id"); // Возвращаем ID пользователя
                 }
             }
